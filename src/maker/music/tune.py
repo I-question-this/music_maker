@@ -48,6 +48,12 @@ class Tune():
                 egglist.append(key)
         return egglist
 
+    # Changes Duty Cycle
+    def adjust_duty_cycle(self, new_duty_cycle):
+        for note in self.notes:
+            note.duty_cycle = new_duty_cycle * 100
+        return
+
     # Creates waveform and saves it to file
     def save_to_file(self, filename="test.wav"):
         synth = chippy.Synthesizer(framerate = 44100)

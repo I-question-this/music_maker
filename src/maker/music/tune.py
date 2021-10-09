@@ -7,6 +7,26 @@ EASTEREGGS = {
     "Dies Irae": ['G', 'E', 'G', 'F']
     }
 
+# Keys go A, B, C, D, E, F, G
+KEYS = {
+    "C": ["A", "B", "C", "D", "E", "F", "G"],
+    "G": ["A", "B", "C", "D", "E", "F#", "G"],
+    "D": ["A", "B", "C#", "D", "E", "F#", "G"],
+    "A": ["A", "B", "C#", "D", "E", "F#", "G#"],
+    "E": ["A", "B", "C#", "D#", "E", "F#", "G#"],
+    "B": ["A#", "B", "C#", "D#", "E", "F#", "G#"],
+    "F#": ["A#", "B", "C#", "D#", "F", "F#", "G#"],
+    "C#": ["A#", "C", "C#", "D#", "F", "F#", "G#"],
+    
+    "F": ["A", "A#", "C", "D", "E", "F", "G"],
+    "Bb": ["A", "A#", "C", "D", "D#", "F", "G"],
+    "Eb": ["G#", "A#", "C", "D", "D#", "F", "G"],
+    "Ab": ["G#", "A#", "C", "C#", "D#", "F", "G"],
+    "Db": ["G#", "A#", "C", "C#", "D#", "F", "F#"],
+    "Gb": ["G#", "A#", "B", "C#", "D#", "F", "F#"],
+    "Cb": ["G#", "A#", "B", "C#", "D#", "E", "F#"],
+}
+
 def is_egg_in_tune(egg:list, song:list):
     # .: wild card
     # *: 0 or more
@@ -30,6 +50,7 @@ class Tune():
 
     # Changes the letter representation from pygame to note objects
     def letter_to_notes(self):
+        # TODO: Change note based on key signature
         for note in self.letter_representation:          
             self.notes.append(NOTES[note])
         return

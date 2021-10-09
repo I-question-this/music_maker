@@ -91,5 +91,3 @@ class Tune():
             waveform += temp_wave
         synth.save_wave(waveform, filename)
         return
-
-test = Tune()

@@ -15,7 +15,8 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'music = maker.music.music:cli_interface'
+            'musicmaker-terminal = maker.music.music:cli_interface',
+            'musicmaker-gui  = maker.gui.gui:cli_interface'
         ]
     }
 )

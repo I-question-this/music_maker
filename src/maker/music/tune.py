@@ -6,7 +6,6 @@ EASTEREGGS = {
     "Dies Irae": ['G', 'E', 'G', 'F']
     }
 
-# V.3 with bug edits and aestethics
 def is_egg_in_tune(egg:list, song:list):
     # .: wild card
     # *: 0 or more
@@ -32,11 +31,8 @@ class Tune():
         return
 
     def check_easter_eggs(self):
-        print(EASTEREGGS)
         egglist = []
         for key in EASTEREGGS:
-            print(EASTEREGGS[key], self.letter_representation)
-            print(is_egg_in_tune(EASTEREGGS[key],  self.letter_representation))
             if(is_egg_in_tune(EASTEREGGS[key],  self.letter_representation)):
                 egglist.append(key)
         return egglist

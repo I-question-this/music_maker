@@ -19,22 +19,22 @@ class UnknownNote(Exception):
 
 class NoteOnBar():
     NOTE_POSITIONS = collections.OrderedDict({
-        "rest": None,
-        "hold": None,
-        "G Low": None,
-        "A Low": None,
-        "B Low": None,
-        "C Low": None,
-        "D Low": None,
-        "E Low": None,
-        "F": None,
-        "G High": None,
-        "A High": None,
-        "B High": None,
-        "C High": None,
-        "D High": None,
-        "E High": None,
-        "wild": None,
+        "rest": 1,
+        "hold": 0.9,
+        "G Low": 0.8,
+        "A Low": 0.7,
+        "B Low": 0.6,
+        "C Low": 0.5,
+        "D Low": 0.4,
+        "E Low": 0.3,
+        "F": 0.2,
+        "G High": 0.1,
+        "A High": 0,
+        "B High": -0.1,
+        "C High": -0.2,
+        "D High": -0.3,
+        "E High": -0.4,
+        "wild": -0.5,
     })
 
     def __init__(self, group:pygame.sprite.Group, note:str="rest"):
@@ -53,10 +53,18 @@ class NoteOnBar():
         self.bar = BarSprite()
         group.add(self.bar)
         self.note = NoteSprite(note)
+        self.update_note_position()
         group.add(self.note)
 
+    def update_note_position(self):
+        slider = int(self.bar.rect.height *\
+                     self.NOTE_POSITIONS[self.note.note])
+        self.note.rect.y = self.bar.rect.y + slider
+
     def update(self):
-        self.note.update(next(self.note_cycle))
+        new_note = next(self.note_cycle)
+        self.note.update(new_note)
+        self.update_note_position()
 
     def add(self, group: pygame.sprite.Group):
         group.add(self.bar)

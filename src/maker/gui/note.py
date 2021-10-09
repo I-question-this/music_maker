@@ -18,13 +18,13 @@ class NoteSprite(pygame.sprite.Sprite):
     def __init__(self, note:str):
         super().__init__()
 
+        self.update(note)
+
+    def update(self, note):
         if note not in NOTE_ASSETS:
             raise UnknownNoteSprite(note)
 
-        self.image = pygame.image.load(NOTE_ASSETS[note])
-        self.rect = self.image.get_rect()
-
-    def update(self, note:str="A"):
+        self.note = note
         self.image = pygame.image.load(NOTE_ASSETS[note])
         self.rect = self.image.get_rect()
 

@@ -9,6 +9,7 @@ import pygame
 import sys
 
 from maker.gui.note import NoteSprite
+from maker.gui.note_on_bar import NoteOnBar
 
 
 def parse_arguments(args=None) -> None:
@@ -46,7 +47,9 @@ def main() -> None:
     all_sprites = pygame.sprite.Group()
     # main application loop
     run = True
-    note = "A"
+    # Test single note on a bar
+    note = NoteOnBar(all_sprites)
+
     while run:
         # Game States
         mousex = None
@@ -58,16 +61,10 @@ def main() -> None:
                 run = False
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = pygame.mouse.get_pos()
-                all_sprites.add(NoteSprite(note))
-                all_sprites.sprites()[-1].rect.x = mousex
-                all_sprites.sprites()[-1].rect.y = mousey
-                if note == "A":
-                    note = "B"
-                else:
-                    note = "A"
+                note.update()
 
         # clear the display
-        window.fill(0)
+        window.fill((255, 255, 255))
 
         # Draw everything
         all_sprites.draw(window)

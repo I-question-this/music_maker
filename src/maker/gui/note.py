@@ -22,5 +22,9 @@ class NoteSprite(pygame.sprite.Sprite):
             raise UnknownNoteSprite(note)
 
         self.image = pygame.image.load(NOTE_ASSETS[note])
-
         self.rect = self.image.get_rect()
+
+    def update(self, note:str="A"):
+        self.image = pygame.image.load(NOTE_ASSETS[note])
+        self.rect = self.image.get_rect()
+

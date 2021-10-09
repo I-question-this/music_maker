@@ -19,11 +19,25 @@ class UnknownNote(Exception):
 
 class NoteOnBar():
     NOTE_POSITIONS = collections.OrderedDict({
-        "A": None,
-        "B": None
+        "rest": None,
+        "hold": None,
+        "G Low": None,
+        "A Low": None,
+        "B Low": None,
+        "C Low": None,
+        "D Low": None,
+        "E Low": None,
+        "F": None,
+        "G High": None,
+        "A High": None,
+        "B High": None,
+        "C High": None,
+        "D High": None,
+        "E High": None,
+        "wild": None,
     })
 
-    def __init__(self, group:pygame.sprite.Group, note:str="A"):
+    def __init__(self, group:pygame.sprite.Group, note:str="rest"):
         if note not in self.NOTE_POSITIONS:
             raise UnknownNote(note)
 

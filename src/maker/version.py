@@ -69,4 +69,4 @@ class Version:
 
 
 # The version
-__version__ = Version(0, 0, 3)
+__version__ = Version(0, 0, 4)

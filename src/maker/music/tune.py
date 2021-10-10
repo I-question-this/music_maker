@@ -127,12 +127,12 @@ if __name__ == "__main__":
     letter_representation = ['A','A', 'C', 'B', 'B', 'A', 'A', 'A', 'E', 'E', 'D', 'D', 'D', 'D', 'B', 'B'] # Note names from Pygame game
     test_rage = Tune(letter_representation, key_signature="B")
     with open("test_rage.json", "w") as fout:
-        json.dump(test_rage.to_dict(), fout)
+        json.dump(test_rage.to_dict(), fout, indent=2)
 
     test_happy = Tune(letter_representation, key_signature="C")
     with open("test_happy.json", "w") as fout:
-        json.dump(test_happy.to_dict(), fout)
+        json.dump(test_happy.to_dict(), fout, indent=2)
 
     test_sad = Tune(letter_representation, key_signature="Db")
     with open("test_sad.json", "w") as fout:
-        json.dump(test_sad.to_dict(), fout)
+        json.dump(test_sad.to_dict(), fout, indent=2)

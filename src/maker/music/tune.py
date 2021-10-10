@@ -36,7 +36,7 @@ def is_egg_in_tune(egg:list, song:list):
 
 
 class Tune():
-    def __init__(self, tempo=150, base_volume=1, key_signature = "C#"):    
+    def __init__(self, tempo=250, base_volume=1, key_signature = "C#"):    
         self.mood = None
         self.letter_representation = ['A','A', 'C', 'B', 'B', 'A', 'A', 'A', 'E', 'E', 'D', 'D', 'D', 'D', 'B', 'B'] # Note names from Pygame game
         self.notes = []
@@ -69,12 +69,6 @@ class Tune():
                 egglist.append(key)
         return egglist
 
-    # Changes Duty Cycle
-    def adjust_duty_cycle(self, new_duty_cycle):
-        for note in self.notes:
-            note.duty_cycle = new_duty_cycle * 100
-        return
-
     def key_signature_adjustment(self):
         for i in range(len(self.letter_representation)):
             for key in KEYS[self.key_signature]:
@@ -84,8 +78,8 @@ class Tune():
         return
 
     # Creates waveform and saves it to file
-    def save_to_file(self, filename="test2.wav"):
-        synthesizer = Synthesizer(osc1_waveform=Waveform.square, osc1_volume=1, use_osc2=False)
+    def save_to_file(self, filename="test.wav"):
+        synthesizer = Synthesizer(osc1_waveform=Waveform.square, osc1_volume=self.base_volume, use_osc2=False)
         wave = synthesizer.generate_chord([1], 0.01)
 
         for note in self.notes:

@@ -115,7 +115,10 @@ def main() -> None:
                         # background_image = background_with_naruto_pikachu_image
                     elif "Boruto" in tune.easter_eggs:
                         print("IDK Something naruto related")
-                        # background_image = background_scar_image
+                        # background_image = background_naruto_image
+                    elif "Boring" in tune.easter_eggs:
+                        print("Sleepy Cat eyes")
+                        # background_image = background_sleep_image
                     else:
                         background_image = background_normal_image
 

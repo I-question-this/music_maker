@@ -13,7 +13,8 @@ EASTEREGGS = {
     "Dies Irae": ['G', 'F', 'G', 'E Low'],
     "Parry Hotter": ['B Low', 'E Low', 'G', 'F', 'E Low', 'E Low', 'B', 'A', 'A', 'A', 'F'],
     "Bokemon": ['A', 'A', 'A', 'A', 'A', 'G', 'E Low', 'C Low'],
-    'Boruto': ['A Low', 'E Low', 'D Low', 'G', 'G', 'D Low', 'D Low', 'E Low', 'E Low']
+    "Boruto": ['A Low', 'E Low', 'D Low', 'G', 'G', 'D Low', 'D Low', 'E Low', 'E Low'],
+    "Boring": ['R', 'R', 'R', 'R', 'R', 'R', 'R', 'R']
     }
 
 # Keys go A, B, C, D, E, F, G

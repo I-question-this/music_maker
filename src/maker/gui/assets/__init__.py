@@ -10,6 +10,8 @@ BACKGROUND_CAT_ASSET = os.path.join(ASSETS_DIR, "background_cat.png")
 
 BAR_ASSET = os.path.join(ASSETS_DIR, "bar.png")
 
+PLAY_BUTTON_ASSET = os.path.join(ASSETS_DIR, "play_button.png")
+
 NOTE_ASSETS = {
         "rest": os.path.join(ASSETS_DIR, "rest.png"),
         "hold": os.path.join(ASSETS_DIR, "hold.png"),

@@ -34,7 +34,7 @@ class Measure():
             for col_num in range(len(self.rows[row_num])):
                 self.rows[row_num][col_num].move(
                         x + width * col_num,
-                        y + height * 2 * row_num)
+                        y + height * 1.5 * row_num)
 
     def check_mouse_click(self, mousex:int, mousey:int):
         mousex, mousey = pygame.mouse.get_pos()

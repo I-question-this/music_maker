@@ -6,6 +6,8 @@ import os
 
 ASSETS_DIR = os.path.dirname(os.path.abspath(__file__))
 
+BACKGROUND_CAT_ASSET = os.path.join(ASSETS_DIR, "background_cat.png")
+
 BAR_ASSET = os.path.join(ASSETS_DIR, "bar.png")
 
 NOTE_ASSETS = {

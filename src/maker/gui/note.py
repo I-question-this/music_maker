@@ -26,5 +26,7 @@ class NoteSprite(pygame.sprite.Sprite):
 
         self.note = note
         self.image = pygame.image.load(NOTE_ASSETS[note])
+        self.image = pygame.transform.scale(
+                self.image, (65, 40))
         self.rect = self.image.get_rect()
 

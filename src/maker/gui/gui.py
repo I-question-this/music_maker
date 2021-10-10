@@ -8,6 +8,7 @@ import os
 import pygame
 import sys
 
+from maker.gui.assets import BACKGROUND_CAT_ASSET
 from maker.gui.measure import Measure
 
 
@@ -40,15 +41,20 @@ def main() -> None:
     FileNotFoundError
         Means that the input file was not found.
     """
-    window = pygame.display.set_mode((820, 500))
+    window = pygame.display.set_mode((1000, 830))
     clock = pygame.time.Clock()
+
+    background_image = pygame.image.load(BACKGROUND_CAT_ASSET)
+    background_image = pygame.transform.scale(
+            background_image, 
+            (window.get_width(), window.get_height()))
 
     all_sprites = pygame.sprite.Group()
     # main application loop
     run = True
     # Test single note on a bar
     measure = Measure(2, 8, all_sprites)
-    measure.move(10, 10)
+    measure.move(145, 300)
 
     while run:
         # event loop
@@ -61,6 +67,9 @@ def main() -> None:
 
         # clear the display
         window.fill((255, 255, 255))
+        
+        # Draw background
+        window.blit(background_image, (0,0))
 
         # Draw everything
         all_sprites.draw(window)

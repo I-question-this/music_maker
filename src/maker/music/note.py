@@ -5,13 +5,15 @@ def adjust_frequency(base_freq, num_twelfths):
     return new_freq
 
 class Note():
-    def __init__(self, name, octave, frequency, length, duty_cycle, volume = 1):
+    def __init__(self, name, octave, frequency, length, duty_cycle, volume = 1, add_harm=True):
         self.name = name
         self.octave = octave
         self.frequency = frequency
         self.length = length
         self.duty_cycle = duty_cycle * 100
         self.volume = volume
+        self.add_harmonics = add_harm
+        self.add_duty = True
 
 NOTES = {
     "A": Note(name = "A", octave = 4, frequency = 440, length = 0.25, duty_cycle=0.25), 

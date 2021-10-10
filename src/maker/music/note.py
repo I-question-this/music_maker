@@ -38,4 +38,5 @@ NOTES = {
     "D": Note(name = "D", octave = 4, frequency = adjust_frequency(880, 5), length = 0.25),
     "D#": Note(name = "D#", octave = 4, frequency = adjust_frequency(880, 6), length = 0.25),
     "E": Note(name = "E", octave = 4, frequency = adjust_frequency(880, 7), length = 0.25),
+    "R": Note(name = "R", octave= 0, frequency = 0, length = 0)
 }

@@ -126,7 +126,6 @@ class Tune():
 
         writer = Writer()
         writer.write_wave(filename, wave)
-        print(f"Filename {filename} written")
         return
 
 # Execute only if this file is being run as the entry file.

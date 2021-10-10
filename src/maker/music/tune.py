@@ -4,6 +4,7 @@ from synthesizer import Synthesizer, Waveform, Writer
 import numpy as np
 from note import Note, NOTES
 import copy
+import tempfile
 
 EASTEREGGS = {
     "Dies Irae": ['G', 'E', 'G', 'F']
@@ -103,6 +104,8 @@ test_rage = Tune(key_signature="B")
 test_happy = Tune(key_signature="C")
 test_sad = Tune(key_signature="Db")
 print(test_sad.letter_representation)
-test_rage.save_to_file(filename="test.wav")
+tempdir = tempfile.TemporaryDirectory()
+temporary_file = f"{tempdir.name}/test.wav"
+test_rage.save_to_file(filename=temporary_file)
 test_happy.save_to_file(filename="test2.wav")
 test_sad.save_to_file(filename="test3.wav")

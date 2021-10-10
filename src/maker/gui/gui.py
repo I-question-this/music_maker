@@ -6,6 +6,7 @@ __author__="Tyler Westland"
 import argparse
 import os
 import pygame
+from pygame import mixer
 import sys
 import tempfile
 
@@ -58,13 +59,20 @@ def main() -> None:
             play_button_image, 
             (play_button_rect.width, play_button_rect.height))
 
+    # Set up temporary save file location
+    tempdir = tempfile.TemporaryDirectory()
+    temp_wave = f"{tempdir.name}/temp.wav"
+    # Set up mixer
+    mixer.init()
+    mixer.music.set_volume(0.05)
+
+    # Create the notes
     all_sprites = pygame.sprite.Group()
-    # main application loop
-    run = True
-    # Test single note on a bar
     measure = Measure(2, 8, all_sprites)
     measure.move(145, 300)
 
+    # main application loop
+    run = True
     while run:
         # event loop
         for event in pygame.event.get():
@@ -76,7 +84,14 @@ def main() -> None:
 
                 mouse_rect = pygame.Rect((mousex, mousey), (0,0))
                 if play_button_rect.contains(mouse_rect):
-                    print("PLAY")
+                    # Create the tune
+                    tune = measure.to_tune()
+                    # Crate the wave file
+                    tune.save_to_file(temp_wave)
+                    # Load the wave file
+                    mixer.music.load(temp_wave)
+                    # Play the wave file
+                    mixer.music.play()
 
 
         # clear the display

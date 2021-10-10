@@ -2,9 +2,13 @@
 
 __author__="Tyler Westland"
 
+import random
+random.seed()
 import pygame
 
 from maker.gui.note_on_bar import NoteOnBar
+from maker.music.tune import Tune
+
 
 class Measure():
     def __init__(self, rows:int, columns:int, group:pygame.sprite.Group,
@@ -24,6 +28,34 @@ class Measure():
 
         # Move all of them to the correct placement
         self.move(x, y)
+
+    def to_tune(self) -> Tune:
+        note_codes = []
+        for row in self.rows:
+            for note in row:
+                # Set note letter aside
+                note_code = note.note.note
+
+                # Handle wild case
+                if note_code == "wild":
+                    while note_code == "wild":
+                        note_code = random.choice(
+                                list(NoteOnBar.NOTE_POSITIONS))
+
+                # Handle more special cases
+                if note_code == "hold":
+                    if len(note_codes) == 0:
+                        note_codes.append("R")
+                    else:
+                        note_codes.append(note_codes[-1])
+                elif note_code == "rest":
+                    note_codes.append("R")
+                else:
+                    note_codes.append(note_code)
+
+        # Create Tune object
+        print(note_codes)
+        return Tune(note_codes)
 
     def move(self, x:int, y:int):
         self.x = x

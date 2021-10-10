@@ -1,10 +1,13 @@
-__author__="Aaron Ruen"
+#!/usr/bin/env python3
+"""Tunable Tune of Notes"""
+
+__author__="Aaron Ruen, Tyler Westland"
 import re
 from synthesizer import Synthesizer, Waveform, Writer
 import numpy as np
-from note import Note, NOTES
+from maker.music.note import Note, NOTES
 import copy
-import tempfile
+import json
 
 EASTEREGGS = {
     "Dies Irae": ['G', 'E', 'G', 'F']
@@ -38,9 +41,9 @@ def is_egg_in_tune(egg:list, song:list):
 
 
 class Tune():
-    def __init__(self, tempo=250, base_volume=1, key_signature = "C#"):    
+    def __init__(self, letter_representation, tempo=250, base_volume=1, key_signature = "C#"):
+        self.letter_representation = letter_representation
         self.mood = None
-        self.letter_representation = ['A','A', 'C', 'B', 'B', 'A', 'A', 'A', 'E', 'E', 'D', 'D', 'D', 'D', 'B', 'B'] # Note names from Pygame game
         self.notes = []
         self.tempo = tempo # default tempo = 100 because science
         self.base_volume = base_volume # Default 1 (amplitude for square waves)
@@ -49,6 +52,23 @@ class Tune():
         # Run function during init
         self.letter_to_notes()
         self.adjust_note_length()
+
+    def to_dict(self) -> dict:
+        return {
+            "letter_representation": self.letter_representation,
+            "tempo": self.tempo,
+            "base_volume": self.base_volume,
+            "key_signature": self.key_signature
+            }
+
+    @classmethod
+    def from_dict(cls, d:dict) -> "Tune":
+        return cls(
+                letter_representation=d["letter_representation"],
+                tempo=d["tempo"],
+                base_volume=d["base_volume"],
+                key_signature=d["key_signature"]
+                )
 
     # Changes the letter representation from pygame to note objects
     def letter_to_notes(self):
@@ -100,12 +120,17 @@ class Tune():
         print(f"Filename {filename} written")
         return
 
-test_rage = Tune(key_signature="B")
-test_happy = Tune(key_signature="C")
-test_sad = Tune(key_signature="Db")
-print(test_sad.letter_representation)
-tempdir = tempfile.TemporaryDirectory()
-temporary_file = f"{tempdir.name}/test.wav"
-test_rage.save_to_file(filename=temporary_file)
-test_happy.save_to_file(filename="test2.wav")
-test_sad.save_to_file(filename="test3.wav")
+# Execute only if this file is being run as the entry file.
+if __name__ == "__main__":
+    letter_representation = ['A','A', 'C', 'B', 'B', 'A', 'A', 'A', 'E', 'E', 'D', 'D', 'D', 'D', 'B', 'B'] # Note names from Pygame game
+    test_rage = Tune(letter_representation, key_signature="B")
+    with open("test_rage.json", "w") as fout:
+        json.dump(test_rage.to_dict(), fout)
+
+    test_happy = Tune(letter_representation, key_signature="C")
+    with open("test_happy.json", "w") as fout:
+        json.dump(test_happy.to_dict(), fout)
+
+    test_sad = Tune(letter_representation, key_signature="Db")
+    with open("test_sad.json", "w") as fout:
+        json.dump(test_sad.to_dict(), fout)

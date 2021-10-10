@@ -7,6 +7,7 @@ import argparse
 import os
 import pygame
 import sys
+import tempfile
 
 from maker.gui.assets import BACKGROUND_CAT_ASSET, PLAY_BUTTON_ASSET
 from maker.gui.measure import Measure

@@ -25,6 +25,12 @@ class Measure():
         # Move all of them to the correct placement
         self.move(x, y)
 
+    def to_wave_file(self) -> :
+        notes = ""
+        for row in self.rows:
+            for note in row:
+
+
     def move(self, x:int, y:int):
         self.x = x
         self.y = y

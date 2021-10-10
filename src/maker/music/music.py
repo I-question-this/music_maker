@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Default template for my python files"""
+"""Play a saved tune file and optionally saves it."""
 
 __author__="Tyler Westland"
 
 import argparse
+import json
 import os
 import sys
+import tempfile
+tempdir = tempfile.TemporaryDirectory()
 
 from pygame import mixer
 
+from maker.music.tune import Tune
 
 def parse_arguments(args=None) -> None:
     """Returns the parsed arguments.
@@ -19,28 +23,26 @@ def parse_arguments(args=None) -> None:
         sys.args.
     """
     parser = argparse.ArgumentParser(
-            description="A default template for python",
+            description="Play a saved tune file and optionally saves it.",
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("input_file", help="Path to the input file.")
-    parser.add_argument("-o", "--output_file", help="Path to the output file.",
-            default="output")
-    parser.add_argument("-q", "--quiet", help="Don't print out non-errors",
-                        default=False, action="store_true")
+    parser.add_argument("tune_file", help="Path to the tune file.")
+    parser.add_argument("-sw", "--save_wave", default=None,
+            help="Path to save the wave file, default is to not save it.")
+    save_wav: str=None
+        
     args = parser.parse_args(args=args)
     return args
 
 
-def main(input_file:str, quiet:bool=False, output_file:str="output") -> None:
+def main(tune_file:str, save_wave:str=None) -> None:
     """Main function.
 
     Parameters
     ----------
-    input_file: str
-        Path the input file.
-    output_file: str
-        Path to the output file. Default is 'output'
-    quiet: bool
-        Rather non-errors should be printed. Default is False
+    tune_file: str
+        Path to the tune file.
+    save_wave: str=None
+        Path to save the wav file, default is to not save it.
     Returns
     -------
     ???
@@ -50,18 +52,22 @@ def main(input_file:str, quiet:bool=False, output_file:str="output") -> None:
     FileNotFoundError
         Means that the input file was not found.
     """
-    # Error check if the file even exists
-    if not os.path.isfile(input_file):
-        raise FileNotFoundError("File not found: {}".format(input_file))
+    with open(tune_file) as fin:
+        tune = Tune.from_dict(json.load(fin))
+
+    # Save wave form to temporary file
+    if save_wave is None:
+        save_wave = f"{tempdir.name}/temp.wav"
+    tune.save_to_file(save_wave)
 
     # Starting the mixer
     mixer.init()
       
     # Loading the song
-    mixer.music.load(input_file)
+    mixer.music.load(save_wave)
       
     # Setting the volume
-    mixer.music.set_volume(0.7)
+    mixer.music.set_volume(0.05)
       
     # Start playing the song
     mixer.music.play()

@@ -6,6 +6,7 @@ There are 16 notes:
 + ~: Rest
 + -: Hold (plays the previous note)
 + ?: Wild (plays a random note)
+![Example tune](example_screenshot.png?raw=true)
 
 # Easter Eggs
 Putting specific sequences of notes will result in different things 

@@ -3,6 +3,7 @@ import re
 from synthesizer import Synthesizer, Waveform, Writer
 import numpy as np
 from note import Note, NOTES
+import copy
 
 EASTEREGGS = {
     "Dies Irae": ['G', 'E', 'G', 'F']
@@ -52,7 +53,9 @@ class Tune():
     def letter_to_notes(self):
         self.key_signature_adjustment()
         for note in self.letter_representation:          
-            self.notes.append(NOTES[note])
+            self.notes.append(copy.copy(NOTES[note]))
+            if self.notes[-1].name == "G#" and (self.key_signature in ["F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb"]):
+                self.notes[-1].down_octave()
         return
 
     # Adjusts default note length to the length specified by the tempo
@@ -62,7 +65,7 @@ class Tune():
         return
 
     # Checks for easter eggs :)
-    def check_easter_eggs(self):
+    def check_easter_eggs(self) -> list:
         egglist = []
         for key in EASTEREGGS:
             if(is_egg_in_tune(EASTEREGGS[key],  self.letter_representation)):
@@ -96,5 +99,10 @@ class Tune():
         print(f"Filename {filename} written")
         return
 
-test = Tune()
-test.save_to_file()
+test_rage = Tune(key_signature="B")
+test_happy = Tune(key_signature="C")
+test_sad = Tune(key_signature="Db")
+print(test_sad.letter_representation)
+test_rage.save_to_file(filename="test.wav")
+test_happy.save_to_file(filename="test2.wav")
+test_sad.save_to_file(filename="test3.wav")

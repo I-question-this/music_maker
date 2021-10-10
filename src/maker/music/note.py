@@ -1,7 +1,10 @@
 __author__="Aaron Ruen"
 
-def adjust_frequency(base_freq, num_twelfths):
-    new_freq = round(base_freq * ((2**(1/12))**num_twelfths), 2)
+def adjust_frequency(base_freq, num_twelfths, up = True):
+    if up:
+        new_freq = round(base_freq * ((2**(1/12))**num_twelfths), 2)
+    else:
+        new_freq = round(base_freq * ((2**(1/12))**(-num_twelfths)), 2)
     return new_freq
 
 class Note():
@@ -11,6 +14,10 @@ class Note():
         self.frequency = frequency
         self.length = length
         self.add_harmonics = add_harm
+    
+    def down_octave(self):
+        self.octave -= 1
+        self.frequency = adjust_frequency(self.frequency, num_twelfths=12, up=False)
 
 NOTES = {
     "A": Note(name = "A", octave = 4, frequency = 440, length = 0.25), 

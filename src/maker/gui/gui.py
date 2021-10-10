@@ -7,8 +7,9 @@ import argparse
 import os
 import pygame
 import sys
+import tempfile
 
-from maker.gui.assets import BACKGROUND_CAT_ASSET
+from maker.gui.assets import BACKGROUND_CAT_ASSET, PLAY_BUTTON_ASSET
 from maker.gui.measure import Measure
 
 
@@ -48,6 +49,14 @@ def main() -> None:
     background_image = pygame.transform.scale(
             background_image, 
             (window.get_width(), window.get_height()))
+    play_button_image = pygame.image.load(PLAY_BUTTON_ASSET)
+    play_button_rect = pygame.Rect(
+            (325,675),
+            (int(window.get_width()/3), 
+             int(window.get_height()/5.5)))
+    play_button_image = pygame.transform.scale(
+            play_button_image, 
+            (play_button_rect.width, play_button_rect.height))
 
     all_sprites = pygame.sprite.Group()
     # main application loop
@@ -65,11 +74,19 @@ def main() -> None:
                 mousex, mousey = pygame.mouse.get_pos()
                 measure.check_mouse_click(mousex, mousey)
 
+                mouse_rect = pygame.Rect((mousex, mousey), (0,0))
+                if play_button_rect.contains(mouse_rect):
+                    print("PLAY")
+
+
         # clear the display
         window.fill((255, 255, 255))
         
         # Draw background
         window.blit(background_image, (0,0))
+
+        # Draw play button
+        window.blit(play_button_image, play_button_rect)
 
         # Draw everything
         all_sprites.draw(window)

@@ -57,6 +57,7 @@ class NoteOnBar():
         group.add(self.note)
 
     def update_note_position(self):
+        self.note.rect.x = self.bar.rect.x
         slider = int(self.bar.rect.height *\
                      self.NOTE_POSITIONS[self.note.note])
         self.note.rect.y = self.bar.rect.y + slider
@@ -64,6 +65,11 @@ class NoteOnBar():
     def update(self):
         new_note = next(self.note_cycle)
         self.note.update(new_note)
+        self.update_note_position()
+
+    def move(self, x:int, y:int):
+        self.bar.rect.x = x
+        self.bar.rect.y = y
         self.update_note_position()
 
     def add(self, group: pygame.sprite.Group):

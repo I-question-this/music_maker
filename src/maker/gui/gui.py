@@ -61,6 +61,7 @@ def main() -> None:
                 run = False
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = pygame.mouse.get_pos()
+                note.move(mousex, mousey)
                 note.update()
 
         # clear the display

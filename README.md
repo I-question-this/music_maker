@@ -1,6 +1,7 @@
 # What is this?
-This is a small chip tune player inspired by the 
+Created for the [2021 MakeUC Hackathon](https://makeuc.io/), this is a small chip tune player inspired by the 
 [town tune in Animal Crossing](https://animalcrossing.fandom.com/wiki/Town_tune).
+
 There are 16 notes:
 + G low - E high
 + ~: Rest
@@ -22,6 +23,10 @@ Some are well known tunes, others are thematic sequences of notes.
 ![Example of using Naruto and Pokemon Together](easter_egg_screenshots/naruto_and_naruto_pokemon.png?raw=true)
 ## Sleepy -- Too much silence
 ![Example of sleepy kitty](easter_egg_screenshots/sleepy.png?raw=true)
+
+# Demo
+We posted a [demo video](https://youtu.be/MLxx63Jur7M) of this for 
+[devpost](https://devpost.com/software/music-maker-2xf701) as part of the Hackathon
 
 # Installing
 ## Pip

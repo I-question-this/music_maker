@@ -13,7 +13,6 @@ class Note():
         self.duty_cycle = duty_cycle * 100
         self.volume = volume
         self.add_harmonics = add_harm
-        self.add_duty = True
 
 NOTES = {
     "A": Note(name = "A", octave = 4, frequency = 440, length = 0.25, duty_cycle=0.25), 

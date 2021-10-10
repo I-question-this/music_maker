@@ -12,6 +12,7 @@ import tempfile
 
 from maker.gui.assets import BACKGROUND_CAT_ASSET,\
                              BACKGROUND_DEAD_CAT_ASSET,\
+                             BACKGROUND_SLEEPY_CAT_ASSET,\
                              BOKEMON_ASSET,\
                              LIGHTNING_BOLT_ASSET,\
                              NARUTO_ASSET,\
@@ -58,6 +59,9 @@ def main() -> None:
             (window.get_width(), window.get_height()))
     background_dead_image = pygame.transform.scale(
             pygame.image.load(BACKGROUND_DEAD_CAT_ASSET), 
+            (window.get_width(), window.get_height()))
+    background_sleepy_image = pygame.transform.scale(
+            pygame.image.load(BACKGROUND_SLEEPY_CAT_ASSET), 
             (window.get_width(), window.get_height()))
     bokemon_image = pygame.transform.scale(
             pygame.image.load(BOKEMON_ASSET), 
@@ -126,8 +130,7 @@ def main() -> None:
                     if "Dies Irae" in tune.easter_eggs:
                         background_image = background_dead_image
                     elif "Boring" in tune.easter_eggs:
-                        print("Sleepy Cat eyes")
-                        background_image = background_normal_image
+                        background_image = background_sleepy_image
                     else:
                         background_image = background_normal_image
 

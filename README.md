@@ -16,6 +16,10 @@ Some are well known tunes, others are thematic sequences of notes.
 ![Example of using Dies Irae](easter_egg_screenshots/dies_irae.png?raw=true)
 ## [Harry Potter](https://en.wikipedia.org/wiki/Music_of_the_Harry_Potter_films)
 ![Example of using Harry Potter](easter_egg_screenshots/harry_potter.png?raw=true)
+## [Pokemon](https://en.wikipedia.org/wiki/Pok%C3%A9mon_Theme)
+![Example of using Pokemon](easter_egg_screenshots/pokemon.png?raw=true)
+## [Naruto and Naruto Pikachu](https://en.wikipedia.org/wiki/Naruto)
+![Example of using Naruto and Pokemon Together](easter_egg_screenshots/naruto_and_naruto_pokemon.png?raw=true)
 ## Sleepy -- Too much silence
 ![Example of sleepy kitty](easter_egg_screenshots/sleepy.png?raw=true)
 

@@ -14,6 +14,8 @@ occurring.
 Some are well known tunes, others are thematic sequences of notes.
 ## [Dies Irae](https://en.wikipedia.org/wiki/Dies_irae)
 ![Example of using Dies Irae](easter_egg_screenshots/dies_irae.png?raw=true)
+## [Harry Potter](https://en.wikipedia.org/wiki/Music_of_the_Harry_Potter_films)
+![Example of using Harry Potter](easter_egg_screenshots/harry_potter.png?raw=true)
 
 
 # Installing

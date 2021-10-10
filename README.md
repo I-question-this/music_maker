@@ -32,6 +32,11 @@ pip install .
 ```
 in the root directory of this repo.
 
+One can then run the following command to start the program:
+```bash
+musicmaker-gui
+```
+
 ## Dependencies
 + [synthesizer](https://github.com/yuma-m/synthesizer)
   + Only works on Linux and MacOS.

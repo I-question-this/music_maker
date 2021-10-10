@@ -104,6 +104,18 @@ def main() -> None:
                     # Check for easer eggs
                     if "Dies Irae" in tune.easter_eggs:
                         background_image = background_dead_image
+                    elif "Parry Hotter" in tune.easter_eggs:
+                        print("Harry Potter Scar appears on cat")
+                        # background_image = background_scar_image
+                    elif ("Bokemon" in tune.easter_eggs) and (tune.key_signature=="F") and ("Boruto" not in tune.easter_eggs):
+                        print("Regular Pikachu png appears somewhere")
+                        # background_image = background_with_pikachu_image
+                    elif ("Bokemon" in tune.easter_eggs) and (tune.key_signature=="F") and ("Boruto"  in tune.easter_eggs):
+                        print("Naruto Pikachu png")
+                        # background_image = background_with_naruto_pikachu_image
+                    elif "Boruto" in tune.easter_eggs:
+                        print("IDK Something naruto related")
+                        # background_image = background_scar_image
                     else:
                         background_image = background_normal_image
 

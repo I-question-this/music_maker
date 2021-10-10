@@ -29,5 +29,5 @@ in the root directory of this repo.
 + [synthesizer](https://github.com/yuma-m/synthesizer)
   + Only works on Linux and MacOS.
   + Go to linked Github to install required packages beyond Python.
-+ [pygame](https://www.pygame.org/wiki/GettingStarted)a
++ [pygame](https://www.pygame.org/wiki/GettingStarted)
   + Shouldn't need anything beyond installing the package.

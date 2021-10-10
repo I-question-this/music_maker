@@ -49,20 +49,19 @@ def main() -> None:
     run = True
     # Test single note on a bar
     note = NoteOnBar(all_sprites)
+    note.move(250, 250)
 
     while run:
-        # Game States
-        mousex = None
-        mousey = None
-
         # event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = pygame.mouse.get_pos()
-                note.move(mousex, mousey)
-                note.update()
+                mouse_rect = pygame.Rect((mousex, mousey), (0,0))
+
+                if note.note.rect.contains(mouse_rect):
+                    note.update()
 
         # clear the display
         window.fill((255, 255, 255))

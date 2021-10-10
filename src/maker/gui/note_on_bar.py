@@ -1,4 +1,4 @@
-"""Note on a Bar Sprite"""
+"""Note on a Bar Sprite Manager"""
 
 __author__="Tyler Westland"
 

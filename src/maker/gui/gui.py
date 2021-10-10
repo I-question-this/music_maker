@@ -8,8 +8,7 @@ import os
 import pygame
 import sys
 
-from maker.gui.note import NoteSprite
-from maker.gui.note_on_bar import NoteOnBar
+from maker.gui.measure import Measure
 
 
 def parse_arguments(args=None) -> None:
@@ -41,15 +40,15 @@ def main() -> None:
     FileNotFoundError
         Means that the input file was not found.
     """
-    window = pygame.display.set_mode((500, 500))
+    window = pygame.display.set_mode((820, 500))
     clock = pygame.time.Clock()
 
     all_sprites = pygame.sprite.Group()
     # main application loop
     run = True
     # Test single note on a bar
-    note = NoteOnBar(all_sprites)
-    note.move(250, 250)
+    measure = Measure(2, 8, all_sprites)
+    measure.move(10, 10)
 
     while run:
         # event loop
@@ -58,10 +57,7 @@ def main() -> None:
                 run = False
             elif event.type == pygame.MOUSEBUTTONUP:
                 mousex, mousey = pygame.mouse.get_pos()
-                mouse_rect = pygame.Rect((mousex, mousey), (0,0))
-
-                if note.note.rect.contains(mouse_rect):
-                    note.update()
+                measure.check_mouse_click(mousex, mousey)
 
         # clear the display
         window.fill((255, 255, 255))

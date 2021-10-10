@@ -8,6 +8,8 @@ ASSETS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 BACKGROUND_CAT_ASSET = os.path.join(ASSETS_DIR, "background_cat.png")
 
+BACKGROUND_DEAD_CAT_ASSET = os.path.join(ASSETS_DIR, "background_dead_cat.png")
+
 BAR_ASSET = os.path.join(ASSETS_DIR, "bar.png")
 
 PLAY_BUTTON_ASSET = os.path.join(ASSETS_DIR, "play_button.png")

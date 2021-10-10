@@ -10,7 +10,9 @@ from pygame import mixer
 import sys
 import tempfile
 
-from maker.gui.assets import BACKGROUND_CAT_ASSET, PLAY_BUTTON_ASSET
+from maker.gui.assets import BACKGROUND_CAT_ASSET,\
+                             BACKGROUND_DEAD_CAT_ASSET,\
+                             PLAY_BUTTON_ASSET
 from maker.gui.measure import Measure
 
 
@@ -46,10 +48,17 @@ def main() -> None:
     window = pygame.display.set_mode((1000, 830))
     clock = pygame.time.Clock()
 
-    background_image = pygame.image.load(BACKGROUND_CAT_ASSET)
-    background_image = pygame.transform.scale(
-            background_image, 
+    # Prepare the backgrounds
+    background_normal_image = pygame.transform.scale(
+            pygame.image.load(BACKGROUND_CAT_ASSET), 
             (window.get_width(), window.get_height()))
+    background_dead_image = pygame.transform.scale(
+            pygame.image.load(BACKGROUND_DEAD_CAT_ASSET), 
+            (window.get_width(), window.get_height()))
+
+    # Set the normal background
+    background_image = background_normal_image
+
     play_button_image = pygame.image.load(PLAY_BUTTON_ASSET)
     play_button_rect = pygame.Rect(
             (325,675),
@@ -92,6 +101,11 @@ def main() -> None:
                     mixer.music.load(temp_wave)
                     # Play the wave file
                     mixer.music.play()
+                    # Check for easer eggs
+                    if "Dies Irae" in tune.easter_eggs:
+                        background_image = background_dead_image
+                    else:
+                        background_image = background_normal_image
 
 
         # clear the display

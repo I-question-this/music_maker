@@ -54,7 +54,6 @@ class Measure():
                     note_codes.append(note_code)
 
         # Create Tune object
-        print(note_codes)
         return Tune(note_codes)
 
     def move(self, x:int, y:int):

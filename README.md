@@ -20,6 +20,8 @@ Some are well known tunes, others are thematic sequences of notes.
 ![Example of using Pokemon](easter_egg_screenshots/pokemon.png?raw=true)
 ## [Naruto and Naruto Pikachu](https://en.wikipedia.org/wiki/Naruto)
 ![Example of using Naruto and Pokemon Together](easter_egg_screenshots/naruto_and_naruto_pokemon.png?raw=true)
+## Sleepy -- Too much silence
+![Example of sleepy kitty](easter_egg_screenshots/sleepy.png?raw=true)
 
 # Installing
 ## Pip

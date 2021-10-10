@@ -12,7 +12,10 @@ import tempfile
 
 from maker.gui.assets import BACKGROUND_CAT_ASSET,\
                              BACKGROUND_DEAD_CAT_ASSET,\
+                             BOKEMON_ASSET,\
                              LIGHTNING_BOLT_ASSET,\
+                             NARUTO_ASSET,\
+                             PIKACHU_ASSET,\
                              PLAY_BUTTON_ASSET
 from maker.gui.measure import Measure
 
@@ -56,8 +59,17 @@ def main() -> None:
     background_dead_image = pygame.transform.scale(
             pygame.image.load(BACKGROUND_DEAD_CAT_ASSET), 
             (window.get_width(), window.get_height()))
+    bokemon_image = pygame.transform.scale(
+            pygame.image.load(BOKEMON_ASSET), 
+            (70, 100))
     lightning_bolt_image = pygame.transform.scale(
             pygame.image.load(LIGHTNING_BOLT_ASSET),
+            (50, 100))
+    pikachu_image = pygame.transform.scale(
+            pygame.image.load(PIKACHU_ASSET), 
+            (70, 100))
+    naruto_image = pygame.transform.scale(
+            pygame.image.load(NARUTO_ASSET), 
             (50, 100))
 
     # Set the normal background
@@ -88,6 +100,9 @@ def main() -> None:
     run = True
     # Game states
     draw_lightning_bolt = False
+    draw_bokemon = False
+    draw_pikachu = False
+    draw_naruto = False
     while run:
         # Event loop
         for event in pygame.event.get():
@@ -110,24 +125,23 @@ def main() -> None:
                     # Check for easer eggs
                     if "Dies Irae" in tune.easter_eggs:
                         background_image = background_dead_image
+                    elif "Boring" in tune.easter_eggs:
+                        print("Sleepy Cat eyes")
+                        background_image = background_normal_image
                     else:
                         background_image = background_normal_image
 
                     draw_lightning_bolt = "Parry Hotter" in tune.easter_eggs
+                    draw_bokemon = "Bokemon" in tune.easter_eggs and\
+                            "Boruto" in tune.easter_eggs
+                    draw_pikachu = "Bokemon" in tune.easter_eggs and\
+                            "Boruto" not in tune.easter_eggs
+                    draw_naruto = "Boruto" in tune.easter_eggs
 
-                    if ("Bokemon" in tune.easter_eggs) and (tune.key_signature=="F") and ("Boruto" not in tune.easter_eggs):
-                        print("Regular Pikachu png appears somewhere")
-                        # background_image = background_with_pikachu_image
-                    elif ("Bokemon" in tune.easter_eggs) and (tune.key_signature=="F") and ("Boruto"  in tune.easter_eggs):
-                        print("Naruto Pikachu png")
-                        # background_image = background_with_naruto_pikachu_image
-                    elif "Boruto" in tune.easter_eggs:
-                        print("IDK Something naruto related")
-                        # background_image = background_naruto_image
-                    elif "Boring" in tune.easter_eggs:
-                        print("Sleepy Cat eyes")
-                        # background_image = background_sleep_image
-
+                    if draw_bokemon:
+                        tune.key_signature = "F"
+                    else:
+                        tune.key_signature = "C#"
 
         # clear the display
         window.fill((255, 255, 255))
@@ -138,6 +152,15 @@ def main() -> None:
         # Draw lighting bolt
         if draw_lightning_bolt:
             window.blit(lightning_bolt_image, (470,100)) 
+
+        if draw_bokemon:
+            window.blit(bokemon_image, (20,700)) 
+
+        if draw_pikachu:
+            window.blit(pikachu_image, (20,700)) 
+
+        if draw_naruto:
+            window.blit(naruto_image, (890,730)) 
 
         # Draw play button
         window.blit(play_button_image, play_button_rect)

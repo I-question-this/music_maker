@@ -12,7 +12,13 @@ BACKGROUND_DEAD_CAT_ASSET = os.path.join(ASSETS_DIR, "background_dead_cat.png")
 
 BAR_ASSET = os.path.join(ASSETS_DIR, "bar.png")
 
+BOKEMON_ASSET = os.path.join(ASSETS_DIR, "naruto_pikachu.png")
+
 LIGHTNING_BOLT_ASSET = os.path.join(ASSETS_DIR, "lighting_bolt.png")
+
+NARUTO_ASSET = os.path.join(ASSETS_DIR, "naruto_symbol.png")
+
+PIKACHU_ASSET = os.path.join(ASSETS_DIR, "regular_pikachu.png")
 
 PLAY_BUTTON_ASSET = os.path.join(ASSETS_DIR, "play_button.png")
 

@@ -10,7 +10,7 @@ import copy
 import json
 
 EASTEREGGS = {
-    "Dies Irae": ['G', 'E', 'G', 'F']
+    "Dies Irae": ['G', 'F Low', 'G', 'E Low']
     }
 
 # Keys go A, B, C, D, E, F, G

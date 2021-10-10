@@ -1,6 +1,7 @@
 __author__="Aaron Ruen"
 import re
 import chippy
+import numpy as np
 from note import Note, NOTES
 
 EASTEREGGS = {
@@ -82,12 +83,39 @@ class Tune():
                     break
         return
 
+    def additive_synthesis(self, wave1, wave2):
+        test1 = np.array(bytearray(wave1))
+        test2 = np.array(bytearray(wave2))
+        test3 = np.empty(shape=test1.shape)
+        for i in range(len(test1)):
+            test3[i] = (test1[i] + test2[i])
+            # print(test3[i])
+            #print(test3[i])
+        wave1 = bytes(test3)
+        print(wave1[89])
+        return wave1
+
     # Creates waveform and saves it to file
     def save_to_file(self, filename="test.wav"):
         synth = chippy.Synthesizer(framerate = 44100)
         waveform = synth.pulse_pcm(length=0.001, frequency=10, duty_cycle=0)
+        waveform2 = synth.pulse_pcm(length=0.001, frequency=10, duty_cycle=0)
+        waveform3 = synth.pulse_pcm(length=0.001, frequency=10, duty_cycle=0)
         for note in self.notes:
             temp_wave = synth.pulse_pcm(length=note.length, frequency=note.frequency, duty_cycle=note.duty_cycle)
+            if note.add_harmonics == True:
+                temp_wave_harm = synth.pulse_pcm(length=note.length, frequency=note.frequency*2, duty_cycle=note.duty_cycle)
+                temp_wave2 = self.additive_synthesis(temp_wave, temp_wave_harm)
+            if note.add_duty == True:
+                temp_wave_duty = synth.pulse_pcm(length=note.length, frequency=note.frequency, duty_cycle=note.duty_cycle/2)
+                temp_wave3 = self.additive_synthesis(temp_wave, temp_wave_duty)
             waveform += temp_wave
+            waveform2 += temp_wave2
+            waveform3 += temp_wave3
         synth.save_wave(waveform, filename)
+        synth.save_wave(waveform2, "test2.wav")
+        synth.save_wave(waveform3, "test3.wav")
         return
+
+test = Tune()
+test.save_to_file()

@@ -59,6 +59,16 @@ class Tune():
                 self.notes[-1].down_octave()
         return
 
+    # Adjusts notes based on the key signature
+    def key_signature_adjustment(self):
+        # TODO Fix this and edge cases
+        for i in range(len(self.letter_representation)):
+            for key in KEYS[self.key_signature]:
+                if self.letter_representation[i] == key:
+                    self.letter_representation[i] = KEYS[self.key_signature][key]
+                    break
+        return
+
     # Adjusts default note length to the length specified by the tempo
     def adjust_note_length(self):
         for note in self.notes:
@@ -72,14 +82,6 @@ class Tune():
             if(is_egg_in_tune(EASTEREGGS[key],  self.letter_representation)):
                 egglist.append(key)
         return egglist
-
-    def key_signature_adjustment(self):
-        for i in range(len(self.letter_representation)):
-            for key in KEYS[self.key_signature]:
-                if self.letter_representation[i] == key:
-                    self.letter_representation[i] = KEYS[self.key_signature][key]
-                    break
-        return
 
     # Creates waveform and saves it to file
     def save_to_file(self, filename="test.wav"):

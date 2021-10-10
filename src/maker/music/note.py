@@ -20,16 +20,24 @@ class Note():
         self.frequency = adjust_frequency(self.frequency, num_twelfths=12, up=False)
 
 NOTES = {
-    "A": Note(name = "A", octave = 4, frequency = 440, length = 0.25), 
-    "A#": Note(name = "A#", octave = 4, frequency = adjust_frequency(440, 1), length = 0.25), 
-    "B": Note(name = "B", octave = 4, frequency = adjust_frequency(440, 2), length = 0.25),
-    "C": Note(name = "C", octave = 4, frequency = adjust_frequency(440, 3), length = 0.25),
-    "C#": Note(name = "C#", octave = 4, frequency = adjust_frequency(440, 4), length = 0.25),
-    "D": Note(name = "D", octave = 4, frequency = adjust_frequency(440, 5), length = 0.25),
-    "D#": Note(name = "D#", octave = 4, frequency = adjust_frequency(440, 6), length = 0.25),
-    "E": Note(name = "E", octave = 4, frequency = adjust_frequency(440, 7), length = 0.25),
-    "F": Note(name = "F", octave = 4, frequency = adjust_frequency(440, 8), length = 0.25),
-    "F#": Note(name = "F#", octave = 4, frequency = adjust_frequency(440, 9), length = 0.25),
-    "G": Note(name = "G", octave = 4, frequency = adjust_frequency(440, 10), length = 0.25),
-    "G#": Note(name = "G#", octave = 4, frequency = adjust_frequency(440, 11), length = 0.25),
+    "G Low": Note(name = "G", octave = 3, frequency = adjust_frequency(880, -13), length = 0.25),
+    "A Low": Note(name = "A", octave = 3, frequency = adjust_frequency(880, -12), length = 0.25), 
+    "B Low": Note(name = "B", octave = 3, frequency = adjust_frequency(880, -10), length = 0.25),
+    "C Low": Note(name = "C", octave = 3, frequency = adjust_frequency(880, -9), length = 0.25),
+    "D Low": Note(name = "D", octave = 3, frequency = adjust_frequency(880, -7), length = 0.25),
+    "E Low": Note(name = "E", octave = 3, frequency = adjust_frequency(880, -5), length = 0.25),
+    "F": Note(name = "F", octave = 3, frequency = adjust_frequency(880, -4), length = 0.25),
+    "F#": Note(name = "F#", octave = 3, frequency = adjust_frequency(880, -3), length = 0.25),
+    "G": Note(name = "G", octave = 4, frequency = adjust_frequency(880, -2), length = 0.25),
+    "G#": Note(name = "G#", octave = 4, frequency = adjust_frequency(880, -1), length = 0.25),
+    "A": Note(name = "A", octave = 4, frequency = 880, length = 0.25), 
+    "A#": Note(name = "A#", octave = 4, frequency = adjust_frequency(880, 1), length = 0.25), 
+    "B": Note(name = "B", octave = 4, frequency = adjust_frequency(880, 2), length = 0.25),
+    "C": Note(name = "C", octave = 4, frequency = adjust_frequency(880, 3), length = 0.25),
+    "C#": Note(name = "C#", octave = 4, frequency = adjust_frequency(880, 4), length = 0.25),
+    "D": Note(name = "D", octave = 4, frequency = adjust_frequency(880, 5), length = 0.25),
+    "D#": Note(name = "D#", octave = 4, frequency = adjust_frequency(880, 6), length = 0.25),
+    "E": Note(name = "E", octave = 4, frequency = adjust_frequency(880, 7), length = 0.25),
 }
+
+LOWNOTES = ["A Low", "B Low", "C Low", "D Low", "G Low" "E Low"]

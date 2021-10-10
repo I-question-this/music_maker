@@ -5,7 +5,7 @@ __author__="Aaron Ruen, Tyler Westland"
 import re
 from synthesizer import Synthesizer, Waveform, Writer
 import numpy as np
-from maker.music.note import Note, NOTES
+from maker.music.note import Note, NOTES, adjust_frequency
 import copy
 import json
 
@@ -72,20 +72,27 @@ class Tune():
 
     # Changes the letter representation from pygame to note objects
     def letter_to_notes(self):
+        for note in self.letter_representation:
+            self.notes.append(copy.copy(NOTES[note]))
         self.key_signature_adjustment()
+        """
         for note in self.letter_representation:          
             self.notes.append(copy.copy(NOTES[note]))
-            if self.notes[-1].name == "G#" and (self.key_signature in ["F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb"]):
+            if self.notes[-1].name == "G#" and (self.key_signature in ["F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb"]) and note== "G Low":
                 self.notes[-1].down_octave()
+        """
         return
 
     # Adjusts notes based on the key signature
     def key_signature_adjustment(self):
-        # TODO Fix this and edge cases
-        for i in range(len(self.letter_representation)):
+        for i in range(len(self.notes)):
             for key in KEYS[self.key_signature]:
-                if self.letter_representation[i] == key:
-                    self.letter_representation[i] = KEYS[self.key_signature][key]
+                if self.notes[i].name == key:
+                    if self.notes[i].octave == 3:
+                        self.notes[i].frequency = adjust_frequency(NOTES[key].frequency, 12, up=False)
+                    if self.notes[i].octave == 4:
+                        self.notes[i].frequency = NOTES[key].frequency
+                    self.notes[i].name = KEYS[self.key_signature][key]
                     break
         return
 
